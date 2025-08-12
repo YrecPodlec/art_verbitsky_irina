@@ -1,0 +1,27 @@
+{
+  "name": "art_verbitsky_irina",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --raw \"next dev --turbo\" \"i18nexus listen\"",
+    "build": "i18nexus pull && next build",
+    "start": "i18nexus pull && next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.4.6",
+    "next-intl": "^4.3.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "i18nexus-cli": "^3.8.1",
+    "typescript": "^5"
+  }
+}
