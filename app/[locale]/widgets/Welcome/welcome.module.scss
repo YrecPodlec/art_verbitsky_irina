@@ -1,0 +1,17 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  align-items: center; /* чтобы второй столбец тоже по центру вертикально */
+  padding: 0 20px; /* например, отступы по краям */
+}
+
+.imgWrapper {
+  position: relative;
+  width: 100%;
+  height: 90vh;    // 90% от высоты viewport
+  max-height: 90%; // дополнительно ограничение по высоте контейнера, если нужен
+  justify-self: center; // центрируем по горизонтали внутри grid ячейки
+  align-self: center;   // центрируем по вертикали внутри grid ячейки
+  overflow: hidden;     // чтобы обрезались края, если image больше блока
+}

@@ -1,0 +1,14 @@
+@import "app/[locale]/shared/styles/index";
+.line {
+  width: 100%;
+  height: 8px; // или нужная высота полоски
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.line > div {
+  height: 100%;
+  background-color: $color-orange-dark; // цвет заполнения
+  width: 0; // стартовая ширина
+  transition: width 0.1s linear;
+}

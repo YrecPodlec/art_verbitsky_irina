@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently --raw \"next dev --turbo\" \"i18nexus listen\"",
-    "build": "i18nexus pull && next build",
-    "start": "i18nexus pull && next start",
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.1",
     "next": "15.4.6",
     "next-intl": "^4.3.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "sass": "^1.90.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,0 +1,16 @@
+@import "@/app/[locale]/shared/styles/index";
+.button {
+  background: $color-orange-main;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background: $color-orange-dark;
+  }
+}

@@ -9,7 +9,9 @@
     --foreground: #ededed;
   }
 }
-
+main{
+    margin: auto 120px;
+}
 html,
 body {
   max-width: 100vw;
