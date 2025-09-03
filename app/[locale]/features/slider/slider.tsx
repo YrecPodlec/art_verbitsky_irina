@@ -1,37 +1,51 @@
-import React from 'react';
+'use client'
+import React, {useCallback, useEffect} from 'react';
+import {SliderContext} from "@/app/[locale]/features/slider/useSlider";
+import {Pagination} from "@/app/[locale]/features";
 import {LineSlider, SliderRow} from "@/app/[locale]/shared";
-interface IProps {
-    maxTime: number;
-    children: React.ReactNode;
-}
-const Slider = ({maxTime, children}: IProps) => {
+import styles from './slider.module.scss'
+type SliderProps = {
+    items: React.ReactNode[];
+    maxTime?: number;
+    arrows?: boolean;
+    pagination?: boolean;
+    progress?: boolean;
+};
+const Slider: React.FC<SliderProps> = ({items, maxTime, arrows = true, pagination = true, progress = true,}) => {
+    const [current, setCurrent] = React.useState(0);
+    const next = useCallback(() => {
+        setCurrent(prev => (prev + 1) % items.length);
+    }, [items.length]);
+    const prev = useCallback(() => {
+        setCurrent(prev => (prev - 1 + items.length) % items.length);
+    }, [items.length]);
+    useEffect(() => {
+        if (!maxTime) return;
+
+        const timer = setTimeout(() => {
+            next();
+        }, maxTime * 1000);
+
+        return () => clearTimeout(timer); // очищаем при размонтировании или смене current
+    }, [current, maxTime, next]);
+
     return (
-        <div>
-            <div>
-                <SliderRow direction={'left'}/>
+        <SliderContext.Provider value={{items, current, setCurrent, next, prev, maxTime}}>
+            <div className={styles.slider}>
+                <div>{items[current]}</div>
+                {arrows && (
+                    <section className={styles.arrows}>
+                        <SliderRow direction="left" />
+                        <SliderRow direction="right" />
+                    </section>
+                )}
+                {pagination && <Pagination/>}
+                {progress && maxTime && (
+                    <LineSlider key={current} maxTime={maxTime} current={current} />
+                )}
             </div>
-            <div>
-                {children}
-                <LineSlider maxTime={maxTime}/>
-            </div>
-            <div>
-                <SliderRow direction={'right'}/>
-            </div>
-        </div>
+        </SliderContext.Provider>
     );
 };
 
 export default Slider;
-
-
-// Моя задача на завтра. Прописать качественный слайдер. То, что я написал, это скелет. Он не принимает в себя
-// никаких стилей. Он принимает в себя массив. Ему не интересно, что в массиве. Ему интересно только то, сколько
-// объектов внутри этого массива. Какие ему тоже не важны. Может быть, это другие массивы. Может быть, это просто
-// картинки. В чем суть? Мне надо сделать функционал кнопок. Кнопки будут переключаться между элементами этого массива.
-// Также с определенной скоростью. Что за определенное время все равно автоматически будет меняться и переходить
-// на следующий массив. Если дожил до последнего, то просто переходить на первый. Как-то так. И передавать стили
-// также через пропсы. Узнать, как можно это лучше сделать. И тем самым сделать универсальный слайдер. Который будет
-// принимать в себя именно логику. Само переключение. Значит, подытожим. Твоя задача на завтра. Сделать функционал
-// кнопок. Этот слайдер принимает в себя массив. Эти кнопки переключаются по нему. Прыгают, скокают. Еще отображают
-// погенацию. Погенацию я могу прописать как захочу, как угодно. Но в другом месте стилей прописываем. И сами все
-// стили переносить как пропсы.

@@ -1,0 +1,13 @@
+@import "@/app/[locale]/shared/styles/index";
+.btn{
+  border-radius: 99px !important;
+  @include font-size('16');
+  background-color: $color-green-dark;
+  border: 1px solid powderblue;
+  padding: 8px;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+  &:hover{
+    background-color: $color-green-main;
+  }
+}

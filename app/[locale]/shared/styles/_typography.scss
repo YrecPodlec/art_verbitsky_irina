@@ -1,0 +1,23 @@
+/* _typography.scss */
+$font-sizes: (
+  // Очень мелкий текст, кнопки, подписи
+        "4": clamp(0.25rem, 1vw, 0.25rem),   // ~4px
+        "8": clamp(0.5rem, 1vw, 0.5rem),     // ~8px
+
+  // Основной текст, мелкие элементы
+        "16": clamp(0.875rem, 1.5vw, 1rem),  // 14px–16px
+        "24": clamp(1rem, 2vw, 1.5rem),      // 16px–24px
+
+  // Заголовки, подзаголовки
+        "32": clamp(1.5rem, 2.5vw, 2rem),    // 24px–32px
+        "48": clamp(2rem, 3vw, 3rem),        // 32px–48px
+
+  // Крупные заголовки, герои секции
+        "64": clamp(3rem, 3.5vw, 4rem),      // 48px–64px
+        "80": clamp(4rem, 4vw, 5rem),        // 64px–80px
+        "96": clamp(5rem, 5vw, 6rem)         // 80px–96px
+);
+
+@mixin font-size($size) {
+  font-size: map-get($font-sizes, $size);
+}

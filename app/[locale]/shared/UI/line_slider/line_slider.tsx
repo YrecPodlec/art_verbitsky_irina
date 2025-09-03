@@ -1,25 +1,27 @@
-import React from 'react';
-import styles from './line_slider.module.scss';
+'use client'
+import React from "react";
+import styles from "./line_slider.module.scss";
 
-interface Props {
-    maxTime: number; // время в секундах
+interface LineSliderProps {
+    maxTime: number;
+    current?: number; // если хочешь использовать key внутри
 }
 
-const LineSlider = ({ maxTime }: Props) => {
+const LineSlider: React.FC<LineSliderProps> = ({ maxTime, current }) => {
     return (
         <div className={styles.line}>
             <div
-                style={{
-                    animation: `fillAnimation ${maxTime}s linear infinite`,
-                }}
+                key={current} // сброс анимации при смене слайда
+                className={styles.progress}
+                style={{ animation: `fillAnimation ${maxTime}s linear forwards` }}
             />
             <style>
                 {`
-                    @keyframes fillAnimation {
-                        from { width: 0%; }
-                        to { width: 100%; }
-                    }
-                `}
+          @keyframes fillAnimation {
+            from { width: 0%; }
+            to { width: 100%; }
+          }
+        `}
             </style>
         </div>
     );

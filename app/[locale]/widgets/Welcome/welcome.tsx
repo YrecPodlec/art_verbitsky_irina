@@ -1,8 +1,11 @@
+'use client'
 import React from 'react';
 import Image from "next/image";
 import styles from './welcome.module.scss';
+import {Slider} from "@/app/[locale]/features";
 
 const Welcome = () => {
+    const items = ['use1', 'use2', 'use3', 'use4', 'use5']
     return (
         <section className={styles.section}>
             <div className={styles.imgWrapper}>
@@ -14,7 +17,7 @@ const Welcome = () => {
                 />
             </div>
             <div>
-                {/* Другой контент */}
+                <Slider items={items} pagination={true} progress={true} maxTime={10} arrows={true}/>
             </div>
         </section>
     );
