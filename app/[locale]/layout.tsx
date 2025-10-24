@@ -3,6 +3,8 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import React from "react";
 import './globals.css'
+import {Navbar} from "@/app/[locale]/widgets";
+
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -24,6 +26,7 @@ export default async function RootLayout({
         <html lang={locale}>
         <body>
         <NextIntlClientProvider>
+            <Navbar/>
             {children}
         </NextIntlClientProvider>
         </body>

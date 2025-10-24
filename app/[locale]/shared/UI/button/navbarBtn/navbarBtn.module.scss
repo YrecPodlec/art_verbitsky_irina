@@ -1,0 +1,9 @@
+@import "app/[locale]/shared/styles/index";
+.navbarBtn{
+  border: .025rem solid honeydew ;
+  border-radius: 2rem;
+  padding: .5rem 1rem;
+  &:hover{
+    background-color: $color-orange-main;
+  }
+}

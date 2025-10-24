@@ -1,0 +1,15 @@
+@import "app/[locale]/shared/styles/index";
+.btn{
+  background-color: rgba(129, 0, 122, 0.5);
+  border: 2px solid $color-green-main;
+  padding: 8px 32px;
+  cursor: pointer;
+  box-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.4);
+  transition: all ease-in-out .7s;
+  border-radius: 32px;
+  &:hover{
+    background-color: $color-orange-dark;
+    box-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.4) inset;
+    padding: 8px 64px;
+  }
+}

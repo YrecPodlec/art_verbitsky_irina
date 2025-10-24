@@ -1,17 +1,126 @@
+@import "app/[locale]/shared/styles/index";
 .section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  align-items: center; /* чтобы второй столбец тоже по центру вертикально */
-  padding: 0 20px; /* например, отступы по краям */
+  align-items: center;
+  gap: 2rem;
 }
 
-.imgWrapper {
-  position: relative;
+.block1Welcome {
   width: 100%;
-  height: 90vh;    // 90% от высоты viewport
-  max-height: 90%; // дополнительно ограничение по высоте контейнера, если нужен
-  justify-self: center; // центрируем по горизонтали внутри grid ячейки
-  align-self: center;   // центрируем по вертикали внутри grid ячейки
-  overflow: hidden;     // чтобы обрезались края, если image больше блока
+  position: relative;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  &::after {
+    content: "";
+    top: .5rem;
+    left: .5rem;
+    border: 2px solid white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  section{
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+.logoVerbitsky{
+  z-index: 1;
+  font-family: voguer,sans-serif;
+  grid-row: 1;
+  grid-column: 1;
+  margin: 16rem auto;
+  font-size: 4rem;
+  text-align: right;
+  h1,h2{
+    position: relative;
+  }
+  h1::after{
+    content: "";
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    border: 4px solid $color-yellow-light;
+    right: 0;
+    top: 1rem;
+  }
+  h2::before{
+    content: "→";
+    color: $color-orange-main;
+    width: 100%;
+  }
+}
+.block2Welcome {
+  width: 100%;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  .blockBtns{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .IrinaPhoto {
+    position: relative;
+    width: 50%;
+    height: 80%;
+    margin: 0 auto;
+    box-shadow: 12px 12px 8px 0 rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media(max-width: 1030px) and (min-height: 750px) {
+  .section {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .block1Welcome {
+      grid-row: 1;
+      grid-column: 1;
+      z-index: 1;
+      // ✅ ПО ЦЕНТРУ!
+      &::after {
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .block2Welcome {
+      grid-row: 1;
+      grid-column: 1;
+      z-index: 2;
+
+      // ✅ ТОЛЬКО Block2 ВНИЗУ!
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      padding-bottom: 4rem;
+
+      .IrinaPhoto {
+        width: 60%;
+        height: 50%;
+        box-shadow: 12px 12px 8px 0 rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+}
+@media(max-width: 500px) {
+
+  .section {
+    .block2Welcome {
+      .IrinaPhoto {
+        height: 40%;
+      }
+    }
+  }
 }

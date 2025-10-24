@@ -1,16 +1,49 @@
 :root {
-  --background: #ffffff;
-  --foreground: #3e3e3e;
+  --background: #EEEEFF;
+  --foreground: #191C20;
 }
-
+@font-face {
+    font-family: 'voguer';
+    src: url('./shared/styles/fonts/VOGUER.ttf') format('truetype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'fractal';
+    src: url('./shared/styles/fonts/FRACTAL.otf') format('opentype');
+}
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #3e3e3e;
-    --foreground: #ededed;
+    --background: #191C20;
+    --foreground: rgb(236, 236, 253);
   }
 }
+button, a{
+    transition: all ease-in-out 0.5s;
+    font-size: 1rem;
+}
 main{
-    margin: auto 120px;
+    margin: auto 128px;
+    background: repeating-linear-gradient(90deg, #0000,#0000 8.9%, rgba(236, 236, 253, 0.4) 9%, rgba(236, 236, 253, 0.4) 4px);
+}
+@media (max-width: 1680px) {
+    main{
+        margin: auto 96px;
+    }
+}
+@media (max-width: 1200px) {
+    main{
+        margin: auto 64px;
+    }
+}
+@media (max-width: 993px) {
+    main{
+        margin: auto 32px;
+    }
+}
+@media (max-width: 650px) {
+    main{
+        margin: auto 24px;
+    }
 }
 html,
 body {
@@ -21,9 +54,8 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: fractal, sans-serif;
+    letter-spacing: .25rem;
 }
 
 * {
